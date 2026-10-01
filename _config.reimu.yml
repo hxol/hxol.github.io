@@ -497,7 +497,7 @@ algolia_search:
     per_page: 10
 
 generator_search:
-  enable: true
+  enable: false
   field: post
   content: true
 
