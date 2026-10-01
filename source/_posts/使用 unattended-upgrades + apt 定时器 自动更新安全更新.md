@@ -1,10 +1,10 @@
 ---
-title: 使用 unattended-upgrades + apt 定时器unattended-upgrades安全更新
+title: 使用 unattended-upgrades + apt 定时器 自动更新安全更新
 date: 2026-10-01 15:30:19
 tags: [笔记, Linux, Debian, unattended-upgrades, unattended-upgrades]
 ---
 
-# 使用 unattended-upgrades + apt 定时器unattended-upgrades安全更新
+# 使用 unattended-upgrades + apt 定时器 自动更新安全更新
 
 ## 一、安装必要组件
 
