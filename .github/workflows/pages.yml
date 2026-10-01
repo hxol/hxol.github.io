@@ -1,0 +1,52 @@
+name: 部署 Hexo 博客到 GitHub Pages
+
+# 1. 触发条件：只有 main 分支有推送时才触发
+on:
+  push:
+    branches:
+      - main # 如果你的默认分支叫 master，请改成 master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 第一步：检出代码
+      - name: 1. 检出代码
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive # 拉取可能存在的主题子模块
+          fetch-depth: 0
+
+      # 第二步：在容器中安装 Node.js 环境（代替本地环境）
+      - name: 2. 安装 Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm" # 自动缓存依赖，加快后续编译速度
+
+      # 第三步：安装依赖并打包网页
+      - name: 3. 安装依赖 & 构建
+        run: |
+          npm install
+          npm run build
+
+      # 第四步：上传构建好的静态文件供 Pages 使用
+      - name: 4. 提取静态文件
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write   # 允许写入 GitHub Pages
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # 第五步：将构建产物部署到 GitHub Pages（代替你的 rsync）
+      - name: 5. 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
