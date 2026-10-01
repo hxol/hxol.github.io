@@ -18,11 +18,10 @@ jobs:
           fetch-depth: 0
 
       # 第二步：在容器中安装 Node.js 环境（代替本地环境）
-      - name: 2. 安装 Node.js 24
+      - name: 2. 安装 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: "npm" # 自动缓存依赖，加快后续编译速度
 
       # 第三步：安装依赖并打包网页
       - name: 3. 安装依赖 & 构建
