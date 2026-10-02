@@ -1,7 +1,7 @@
 ---
 title: 针对老旧电脑 Lenovo M93p 的 Linux 系统优化指南
 date: 2026-10-01 15:30:28
-tags: [笔记, Linux, m93p]
+tags: [笔记, Linux, Lenovo M93p, GRUB, 核显]
 ---
 
 

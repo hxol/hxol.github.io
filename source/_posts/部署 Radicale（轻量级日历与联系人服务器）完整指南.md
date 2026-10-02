@@ -1,16 +1,16 @@
 ---
 title: 部署 Radicale（轻量级日历与联系人服务器）完整指南
 date: 2026-09-30 15:36:00
-tags: [笔记, Radicale, 自托管]
+tags: [笔记, Radicale, 自托管, 日历, 联系人]
 ---
 
 # 部署 Radicale（轻量级日历与联系人服务器）完整指南
 
-## 1. 项目简介
+## 项目简介
 
 [Radicale](https://github.com/Kozea/Radicale) 是一款使用 Python 编写的开源、轻量级 CalDAV 和 CardDAV 服务器，非常适合个人或小团队用来同步日历、待办事项和联系人。
 
-## 2. 准备工作
+## 准备工作
 
 首先，在宿主机上创建存放配置文件和数据的目录，并进入该目录：
 
@@ -19,7 +19,7 @@ sudo mkdir -p /opt/radicale/{config,data}
 cd /opt/radicale
 ```
 
-## 3. 创建 Radicale 配置文件
+## 创建 Radicale 配置文件
 
 新建并编辑配置文件：
 
@@ -49,7 +49,7 @@ htpasswd_encryption = autodetect
 filesystem_folder = /var/lib/radicale/collections
 ```
 
-## 4. 创建账号密码文件
+## 创建账号密码文件
 
 您可以从以下两种方法中选择一种来生成账号密码文件（`users`）。推荐使用**方法一**，因为无需在宿主机上额外安装软件包。
 
@@ -87,7 +87,7 @@ sudo mv /tmp/users /opt/radicale/config/users
 cat /opt/radicale/config/users
 ```
 
-## 5. 设置目录权限
+## 设置目录权限
 
 Radicale 容器默认使用非 root 用户（UID 为 `1000`，GID 为 `1000`）运行以保证安全性。因为前面的目录是我们使用 `sudo` 创建的，默认所有者是 `root`，这会导致容器因权限不足而无法在 `/opt/radicale/data` 目录中写入日历数据。
 
@@ -98,7 +98,7 @@ sudo chown -R 1000:1000 /opt/radicale/data
 sudo chown -R 1000:1000 /opt/radicale/config
 ```
 
-## 6. 编写 Docker Compose 文件
+## 编写 Docker Compose 文件
 
 创建并编辑 `docker-compose.yml` 文件：
 
@@ -127,7 +127,7 @@ services:
           memory: "500M"
 ```
 
-## 7. 启动与管理服务
+## 启动与管理服务
 
 ### 启动服务
 在 `/opt/radicale` 目录下以后台模式启动容器：
@@ -150,7 +150,7 @@ sudo docker compose ps
 sudo docker compose logs -f
 ```
 
-## 8. 登录与使用
+## 登录与使用
 
 ### Web 端登录
 打开浏览器，访问：

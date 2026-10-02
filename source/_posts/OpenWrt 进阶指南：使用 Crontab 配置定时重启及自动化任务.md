@@ -1,7 +1,7 @@
 ---
 title: OpenWrt 进阶指南：使用 Crontab 配置定时重启及自动化任务
 date: 2026-10-02 18:25:13
-tags: [笔记, OpenWrt, Crontab]
+tags: [笔记, OpenWrt, Crontab, Linux]
 ---
 
 

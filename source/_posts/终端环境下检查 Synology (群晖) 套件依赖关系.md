@@ -1,7 +1,7 @@
 ---
 title: 终端环境下检查 Synology (群晖) 套件依赖关系
 date: 2026-10-02 13:02:08
-tags: [笔记, 群晖, Synology]
+tags: [笔记, 群晖, Synology, DSM, 依赖关系]
 ---
 
 

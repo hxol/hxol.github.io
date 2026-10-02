@@ -1,7 +1,7 @@
 ---
 title: Docker 安装、配置
 date: 2026-10-01 15:30:33
-tags: [笔记, Docker, docker compose, 防火墙]
+tags: [笔记, Docker, docker compose, 防火墙, UFW]
 ---
 
 # Docker 安装、配置与运维全栈指南

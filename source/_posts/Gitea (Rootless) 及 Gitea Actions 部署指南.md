@@ -1,7 +1,7 @@
 ---
 title: Gitea (Rootless) 及 Gitea Actions 部署指南
 date: 2026-09-30 15:30:00
-tags: [笔记, Gitea, 自托管]
+tags: [笔记, Gitea, Gitea Actions, 自托管]
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: 使用 Pocket ID 为群晖 (Synology DSM) 配置 OIDC 单点登录指南
 date: 2026-09-30 15:30:00
-tags: [笔记, 群晖, Pocket ID, 自托管]
+tags: [笔记, 群晖, Pocket ID, DSM, OIDC, 单点登录, 自托管]
 ---
 
 

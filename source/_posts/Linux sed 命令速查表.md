@@ -1,7 +1,7 @@
 ---
 title: Linux sed 命令速查表
 date: 2026-10-01 15:30:05
-tags: [笔记, Linux, sed]
+tags: [笔记, Linux, sed, 流编辑器]
 ---
 
 # Linux sed 命令速查表

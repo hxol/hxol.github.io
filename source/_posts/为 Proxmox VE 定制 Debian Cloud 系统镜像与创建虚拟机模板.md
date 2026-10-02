@@ -1,7 +1,7 @@
 ---
 title: 为 Proxmox VE 定制 Debian Cloud 系统镜像与创建虚拟机模板
 date: 2026-10-01 15:30:38
-tags: [笔记, SSH, PGP, GnuPG, 安全]
+tags: [笔记, Proxmox VE, PVE, Debian Cloud, 系统镜像]
 ---
 
 

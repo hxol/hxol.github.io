@@ -1,7 +1,7 @@
 ---
 title: OpenWRT 划分 VLAN 与网络隔离配置指南
 date: 2026-10-02 19:59:09
-tags: [笔记, OpenWrt, VLAN]
+tags: [笔记, OpenWrt, VLAN, 路由器]
 ---
 
 

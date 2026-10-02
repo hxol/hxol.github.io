@@ -1,7 +1,7 @@
 ---
 title: 在 macOS 上如何优雅、正确地打包压缩文件？
 date: 2026-10-01 15:30:24
-tags: [笔记, macOS, 压缩]
+tags: [笔记, macOS, 压缩, bsdtar, GNU, tar]
 ---
 
 # 在 macOS 上如何优雅、正确地打包压缩文件？

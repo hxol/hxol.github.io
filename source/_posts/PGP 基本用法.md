@@ -1,7 +1,7 @@
 ---
 title: PGP 基本用法
 date: 2026-10-01 15:30:38
-tags: [笔记, SSH, PGP, GnuPG, 安全]
+tags: [笔记, SSH, PGP, GnuPG, 安全, 隐私, 加密]
 ---
 
 

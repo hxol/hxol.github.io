@@ -1,7 +1,7 @@
 ---
 title: YubiKey 硬件级 SSH 身份验证完全指南
 date: 2026-10-02 13:01:39
-tags: [笔记, YubiKey, SSH]
+tags: [笔记, YubiKey, SSH, 安全]
 ---
 
 # YubiKey 硬件级 SSH 身份验证完全指南

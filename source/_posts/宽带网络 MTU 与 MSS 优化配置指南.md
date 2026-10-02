@@ -1,7 +1,7 @@
 ---
 title: 宽带网络 MTU 与 MSS 优化配置指南
 date: 2026-10-01 15:30:32
-tags: [笔记, MikroTik, RouterOS, 路由器, MTU, WireGuard]
+tags: [笔记, MikroTik, RouterOS, 路由器, MTU, MSS, WireGuard]
 ---
 
 # 宽带网络 MTU 与 MSS 优化配置指南 (WireGuard / Phantun / ROS)

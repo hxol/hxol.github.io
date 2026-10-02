@@ -1,7 +1,7 @@
 ---
 title: Docker 部署 Code-Server 及进阶配置指南
 date: 2026-09-30 15:30:00
-tags: [笔记, Code-Server, 自托管]
+tags: [笔记, Code-Server, Git, Gitea, 自托管]
 ---
 
 

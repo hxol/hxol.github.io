@@ -1,7 +1,7 @@
 ---
 title: 基于 RouterOS v7 的单线复用与 VLAN 隔离网络方案
 date: 2026-10-02 13:01:38
-tags: [笔记, RouterOS, VLAN, 路由器]
+tags: [笔记, RouterOS, mikrotik, VLAN, 路由器]
 ---
 
 # 基于 RouterOS v7 的单线复用与 VLAN 隔离网络方案

@@ -1,7 +1,7 @@
 ---
 title: Linux 压缩与归档命令速查表
 date: 2026-10-01 15:30:10
-tags: [笔记, Linux, 压缩]
+tags: [笔记, Linux, 压缩, tar]
 ---
 
 

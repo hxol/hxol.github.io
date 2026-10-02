@@ -1,10 +1,10 @@
 ---
-title: MAC 的终端通过 SSH 登录 Linux 时中文乱码的解决方案
+title: macOS 的终端通过 SSH 登录 Linux 时中文乱码的解决方案
 date: 2026-10-01 15:30:15
-tags: [笔记, Linux, MAC, 乱码]
+tags: [笔记, Linux, macOS, SSH, 乱码]
 ---
 
-# MAC 的终端通过 SSH 登录 Linux 时中文乱码的解决方案
+# macOS 的终端通过 SSH 登录 Linux 时中文乱码的解决方案
 
 ## 一、阻止 macOS SSH 客户端发送不必要的 LC_ALL 变量
 

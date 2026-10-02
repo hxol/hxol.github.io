@@ -1,7 +1,7 @@
 ---
 title: MikroTik RouterOS (ROS) 高级安全配置与防火墙进阶指南
 date: 2026-10-01 15:30:31
-tags: [笔记, MikroTik, RouterOS, 路由器]
+tags: [笔记, MikroTik, RouterOS, 防火墙, 路由器]
 ---
 
 # MikroTik RouterOS (ROS) 高级安全配置与防火墙进阶指南

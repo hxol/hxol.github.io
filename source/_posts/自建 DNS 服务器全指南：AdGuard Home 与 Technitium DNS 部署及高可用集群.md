@@ -1,7 +1,7 @@
 ---
 title: 自建 DNS 服务器全指南：AdGuard Home 与 Technitium DNS 部署及高可用集群
 date: 2026-09-30 15:30:00
-tags: [笔记, DNS, 自托管]
+tags: [笔记, DNS, AdGuard Home, Technitium DNS, 集群, 自托管]
 ---
 
 # 自建 DNS 服务器全指南：AdGuard Home 与 Technitium DNS 部署及高可用集群教程

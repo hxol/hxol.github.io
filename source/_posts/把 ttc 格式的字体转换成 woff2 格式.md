@@ -1,7 +1,7 @@
 ---
 title: 把 ttc 格式的字体转换成 woff2 格式
 date: 2026-10-01 15:30:23
-tags: [笔记, 字体, jellyfin]
+tags: [笔记, 字体, jellyfin, ttc, woff2]
 ---
 
 # 把 ttc 格式的字体转换成 woff2 格式

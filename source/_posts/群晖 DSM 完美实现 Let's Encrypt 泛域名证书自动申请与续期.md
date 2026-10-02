@@ -1,7 +1,7 @@
 ---
 title: 群晖 DSM 完美实现 Let's Encrypt 泛域名证书自动申请与续期
 date: 2026-09-30 15:40:00
-tags: [笔记, 群晖, 自托管]
+tags: [笔记, 群晖, DSM, Let's Encrypt, Docker, 域名证书, 自托管]
 ---
 
 # 群晖 DSM 完美实现 Let's Encrypt 泛域名证书自动申请与续期

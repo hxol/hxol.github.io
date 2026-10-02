@@ -1,7 +1,7 @@
 ---
 title: Tdarr 分布式转码部署指南 (Synology 服务端 + 外部 VM 节点)
 date: 2026-09-30 15:30:00
-tags: [笔记, Tdarr, 自托管]
+tags: [笔记, Tdarr, Synology, 转码, 分布式, 自托管]
 ---
 
 

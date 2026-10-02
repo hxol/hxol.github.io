@@ -1,7 +1,7 @@
 ---
 title: 使用 Docker 部署 Baikal 日历通讯录服务及 Mac 客户端配置指南
 date: 2026-09-30 15:39:00
-tags: [笔记, Baikal, 自托管]
+tags: [笔记, Baikal, 日历, 通讯录, caldav, 自托管]
 ---
 
 # 使用 Docker 部署 Baikal 日历通讯录服务及 Mac 客户端配置指南

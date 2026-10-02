@@ -1,7 +1,7 @@
 ---
 title: 使用 Docker 或 Podman 部署 Cloudflared Tunnel
 date: 2026-09-30 15:34:00
-tags: [笔记, Cloudflared Tunnel, 自托管]
+tags: [笔记, Cloudflared Tunnel, Podman, 自托管]
 ---
 
 # 使用 Docker / Podman 部署 Cloudflared Tunnel 指南

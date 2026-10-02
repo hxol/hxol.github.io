@@ -1,7 +1,7 @@
 ---
 title: Fcitx5 + Rime + 雾凇拼音
 date: 2026-10-01 15:30:20
-tags: [笔记, Linux, Debian, Fcitx5, Rime, 雾凇拼音]
+tags: [笔记, Linux, Debian, Fcitx5, Rime, 雾凇拼音, 输入法]
 ---
 
 

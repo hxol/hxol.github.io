@@ -1,7 +1,7 @@
 ---
 title: Linux lsattr 命令
 date: 2026-10-01 15:30:09
-tags: [笔记, Linux, lsattr]
+tags: [笔记, Linux, lsattr, chattr]
 ---
 
 chattr 和 lsattr 这两个命令是用来查看和改变文件、目录属性的，与 chmod 这个命令相比，chmod 只是改变文件的读写、执行权限，而更底层的属性控制是由 chattr 来改变的。

@@ -1,7 +1,7 @@
 ---
 title: BentoPDF 部署与本地安装完全
 date: 2026-09-30 15:30:00
-tags: [笔记, BentoPDF, 自托管]
+tags: [笔记, BentoPDF, GitHub Pages, 自托管]
 ---
 
 # BentoPDF 部署与本地安装完全

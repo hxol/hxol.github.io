@@ -8,7 +8,7 @@ tags: [笔记, Vaultwarden, 自托管]
 
 本文档介绍了如何使用 Docker Compose 部署 Vaultwarden（第三方 Bitwarden 服务端）并配合 PostgreSQL 作为后端数据库。该方案使用非 root 用户运行，提升了系统的安全性。
 
-## 📌 项目信息
+## 项目信息
 
 - [Vaultwarden GitHub 仓库](https://github.com/dani-garcia/vaultwarden)
 - [Vaultwarden Docker 镜像](https://hub.docker.com/r/vaultwarden/server/tags)
