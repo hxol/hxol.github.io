@@ -9,7 +9,7 @@ tags: [笔记, Code-Server, Git, Gitea, 自托管]
 
 本文档记录了使用 Docker 部署 `code-server`（基于 LinuxServer 镜像）的完整流程，包含 NAS 挂载、权限配置、容器编排以及 SSH 密钥连接私有 Git 仓库（如 Gitea）的进阶配置。
 
-## 1. 项目信息参考
+## 项目信息参考
 
 *   [Code-Server 官方 GitHub 仓库](https://github.com/coder/code-server)
 *   [Code-Server 官方 ghcr.io 镜像](https://github.com/coder/code-server/pkgs/container/code-server)
@@ -18,9 +18,9 @@ tags: [笔记, Code-Server, Git, Gitea, 自托管]
 
 ---
 
-## 2. 环境准备
+## 环境准备
 
-### 2.1 创建项目目录
+### 创建项目目录
 首先在宿主机创建项目所需的基础目录，用于存放配置和 SSH 密钥。
 
 ```bash
@@ -28,7 +28,7 @@ sudo mkdir -p /opt/code-server/config/.ssh
 cd /opt/code-server
 ```
 
-### 2.2 挂载 NAS 目录 (可选)
+### 挂载 NAS 目录 (可选)
 如果需要将 NAS 上的共享文件夹作为代码工作区，可以通过 NFS 进行挂载。
 
 1. **安装 NFS 客户端工具**：
@@ -68,17 +68,17 @@ cd /opt/code-server
 
 ---
 
-## 3. 权限配置
+## 权限配置
 
 为了避免 Docker 产生读写权限问题，我们需要指定容器以特定的用户身份运行。
 
-### 3.1 获取当前用户的 UID 和 GID
+### 获取当前用户的 UID 和 GID
 运行以下命令查看当前用户的 `uid` 和 `gid`（通常普通用户均为 `1000`）：
 ```bash
 id 
 ```
 
-### 3.2 设置目录权限
+### 设置目录权限
 将目录的所有权赋予对应的用户（假设您的 UID 为 `1000`，GID 为 `1000`，请根据上一步的输出结果进行调整）：
 ```bash
 sudo chown -R 1000:1000 /opt/code-server
@@ -87,9 +87,9 @@ sudo chmod -R 755 /opt/code-server
 
 ---
 
-## 4. 编写 Docker 配置
+## 编写 Docker 配置
 
-### 4.1 环境变量文件 (`.env`)
+### 环境变量文件 (`.env`)
 将敏感信息和可变参数提取到环境变量中。
 
 ```bash
@@ -116,7 +116,7 @@ APP_PASSWORD=your_secure_password
 PWA_APPNAME=code-server
 ```
 
-### 4.2 容器编排文件 (`docker-compose.yaml`)
+### 容器编排文件 (`docker-compose.yaml`)
 创建 `docker-compose` 文件：
 
 ```bash
@@ -153,7 +153,7 @@ services:
 
 ---
 
-## 5. 启动服务
+## 启动服务
 
 在启动容器前，如果您已有现成的私钥需要使用，请将其上传至 `/opt/code-server/config/.ssh` 目录下（若不配置则跳过）。
 
@@ -166,7 +166,7 @@ sudo docker compose up -d
 
 ---
 
-## 6. 进阶：配置 SSH 连接私有 Git (以 Gitea 为例)
+## 进阶：配置 SSH 连接私有 Git (以 Gitea 为例)
 
 如果您有一台私有 Git 服务器（如 Gitea/GitLab）并在非标准端口运行 SSH 服务，可以通过配置 `~/.ssh/config` 让 `code-server` 中的 Git 操作免密且顺畅。
 
@@ -208,3 +208,12 @@ sudo docker compose up -d
    # 确保 URL 使用您的 SSH Config 中配置的 Host 别名
    git remote set-url origin git@gitea.yourdomain.com:Username/Repository.git
    ```
+
+## Git 权限与所有权冲突问题
+
+通常发生在 Docker 容器环境，解决这个问题的方法
+
+将目录加入 Git 的安全白名单，直接告诉 Git 忽略所有权检查，信任所有目录。请执行：
+```bash
+git config --global --add safe.directory '*'
+```

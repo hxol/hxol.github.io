@@ -87,6 +87,37 @@ file 'video_part2.mkv'
 ffmpeg -f concat -safe 0 -i list.txt -c copy output_merged.mkv
 ```
 
+脚本实现
+```bash
+#!/bin/bash
+
+# 设置输出文件名
+output="merged_output.mp4"
+
+# 创建一个临时文件清单
+list_file="videos_to_merge.txt"
+> "$list_file"
+
+# 查找当前目录下的视频文件，按文件名排序
+for f in $(find . -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mov" -o -iname "*.mkv" \) | sort); do
+    echo "file '$f'" >> "$list_file"
+done
+
+# 检查是否有文件
+if [ ! -s "$list_file" ]; then
+    echo "没有找到要合并的视频文件。"
+    exit 1
+fi
+
+# 使用 ffmpeg 合并
+ffmpeg -f concat -safe 0 -i "$list_file" -c copy "$output"
+
+# 清理临时文件
+rm "$list_file"
+
+echo "视频已成功合并为 $output"
+```
+
 **为视频添加或替换音轨**
 将独立的音频文件混流进视频，需注意指定 `-c copy` 以避免视频被重新编码：
 ```bash

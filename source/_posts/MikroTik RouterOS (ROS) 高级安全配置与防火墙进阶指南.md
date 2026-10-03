@@ -30,6 +30,7 @@ tags: [笔记, MikroTik, RouterOS, 防火墙, 路由器]
 ```routeros
 # 1. 创建新管理员并删除默认 admin 账户
 /user add name=myadmin group=full password="YourStrongPasswordHere"
+/user disable admin
 /user remove admin
 
 # 2. 禁用不必要的服务 (仅保留 SSH 和 Winbox)
@@ -53,6 +54,17 @@ tags: [笔记, MikroTik, RouterOS, 防火墙, 路由器]
 /tool mac-server set allowed-interface-list=LAN
 /tool mac-server mac-winbox set allowed-interface-list=LAN
 /ip neighbor discovery-settings set discover-interface-list=LAN
+
+# 7. 关闭网速测试服务器
+/tool bandwidth-server set enabled=no
+
+# 8. 关闭其他无用的服务
+/ip proxy set enabled=no
+/ip socks set enabled=no
+/ip upnp set enabled=no
+
+# 9. 让 SSH 更严格安全（添加 aes-128-ctr 加密算法，并禁用 hmac-sha1 及基于 sha1 的密钥交换组）：
+/ip ssh set strong-crypto=yes
 ```
 
 ---
