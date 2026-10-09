@@ -1,10 +1,10 @@
 ---
-title: 基于 Docker Compose 与 PostgreSQL 部署 Vaultwarden
+title: Vaultwarden 部署
 date: 2026-09-30 15:35:00
 tags: [笔记, Vaultwarden, 自托管]
 ---
 
-# 基于 Docker Compose 与 PostgreSQL 部署 Vaultwarden
+# Vaultwarden 部署
 
 本文档介绍了如何使用 Docker Compose 部署 Vaultwarden（第三方 Bitwarden 服务端）并配合 PostgreSQL 作为后端数据库。该方案使用非 root 用户运行，提升了系统的安全性。
 

@@ -1,22 +1,21 @@
 ---
-title: BentoPDF 部署与本地安装完全
+title: BentoPDF 部署与本地安装
 date: 2026-09-30 15:30:00
 tags: [笔记, BentoPDF, GitHub Pages, 自托管]
 ---
 
-# BentoPDF 部署与本地安装完全
+# BentoPDF 部署与本地安装
 
-## 📌 项目信息
-
+## 项目信息
 - **GitHub 仓库**: [alam00000/bentopdf](https://github.com/alam00000/bentopdf)
 - **官方文档**: [BentoPDF 部署文档](https://www.bentopdf.com/docs/self-hosting/)
 
-> **💡 部署建议**：
+> **部署建议**：
 > 对于 BentoPDF 这种纯前端项目，**强烈推荐使用 GitHub Pages 免费部署**。除非您需要企业内网访问或自定义 Nginx 配置，否则使用 Docker 部署并没有太多额外收益。
 
 ---
 
-## 🚀 方式一：部署到 GitHub Pages（推荐）
+## 方式一：部署到 GitHub Pages（推荐）
 
 ### 第一步：Fork 项目仓库
 1. 打开 BentoPDF 的 GitHub 仓库：https://github.com/alam00000/bentopdf
@@ -35,7 +34,7 @@ tags: [笔记, BentoPDF, GitHub Pages, 自托管]
    ```json
    "build": "node scripts/generate-blog.mjs && node scripts/generate-static-tool-links.mjs && tsc && vite build && node scripts/enhance-seo-pages.mjs && NODE_OPTIONS='--max-old-space-size=3072' node scripts/generate-i18n-pages.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-security-headers.mjs",
    ```
-   > **🛑 注意**：只删除 `"build"` 这一行里的这小段，**千万不要删除**它下一行的 `"seo-audit": "node scripts/seo-audit.mjs"`！
+   > **注意**：只删除 `"build"` 这一行里的这小段，**千万不要删除**它下一行的 `"seo-audit": "node scripts/seo-audit.mjs"`！
 5. 修改完成后，点击右上角的绿底按钮 **Commit changes...** 保存提交。
 
 ### 第三步：启用 GitHub Pages
@@ -67,12 +66,12 @@ tags: [笔记, BentoPDF, GitHub Pages, 自托管]
 
 ### 第八步：访问网站
 部署成功后，您的网站地址通常为：
-👉 `https://您的用户名.github.io/bentopdf/`
+`https://您的用户名.github.io/bentopdf/`
 *(如果您修改了仓库名，例如 `my-pdf`，则访问 `https://您的用户名.github.io/my-pdf/`)*
 
 ---
 
-### 🔧 GitHub Pages 维护与进阶
+### GitHub Pages 维护与进阶
 
 **1. 以后怎么更新？**
 如果官方更新了 BentoPDF，您只需要：
@@ -89,7 +88,7 @@ tags: [笔记, BentoPDF, GitHub Pages, 自托管]
 
 ---
 
-## 🐳 方式二：本地安装（Docker 部署）
+## 方式二：本地安装（Docker 部署）
 
 如果您需要在本地服务器或 NAS 上运行，可以参考以下 Docker 部署方案。
 

@@ -108,8 +108,7 @@ services:
     volumes:
       - ./grimmory_data:/app/data
       - ./bookdrop:/bookdrop
-      # 【重要提示】请将 /mnt/books 替换为您宿主机存放电子书的真实路径
-      - /mnt/books:/books
+      - nfs_books:/books
     restart: unless-stopped
     deploy:
       resources:
@@ -143,10 +142,19 @@ services:
         limits:
           cpus: "1"
           memory: "500M"
+
+volumes:
+  nfs_books:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.x.x,nfsvers=4.1,rw,soft,timeo=50,retrans=2
+      device: ":/volume3/Books"
+
 ```
 
 > **补充说明**：
-> 1. `grimmory` 容器中的 `/mnt/books:/books` 是将本机的图书文件夹映射到容器内。部署前请确保 `/mnt/books` 在您的机器上存在，或者将其修改为您实际存放图书的路径。
+> 1. `- nfs_books:/books` 把 NAS 里的书库挂载到宿主机上。
 > 2. `USER_ID` / `GROUP_ID` 和 `PUID` / `PGID` 请保持一致，并对应步骤 2 中查到的权限。
 
 ---

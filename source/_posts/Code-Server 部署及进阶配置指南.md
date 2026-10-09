@@ -1,11 +1,11 @@
 ---
-title: Docker 部署 Code-Server 及进阶配置指南
+title: Code-Server 部署及进阶配置指南
 date: 2026-09-30 15:30:00
 tags: [笔记, Code-Server, Git, Gitea, 自托管]
 ---
 
 
-# Docker 部署 Code-Server 及进阶配置指南
+# Code-Server 部署及进阶配置指南
 
 本文档记录了使用 Docker 部署 `code-server`（基于 LinuxServer 镜像）的完整流程，包含 NAS 挂载、权限配置、容器编排以及 SSH 密钥连接私有 Git 仓库（如 Gitea）的进阶配置。
 
@@ -36,35 +36,6 @@ cd /opt/code-server
    sudo apt update && sudo apt install nfs-common -y
    ```
 
-2. **创建本地挂载点**：
-   ```bash
-   sudo mkdir -p /mnt/docs
-   ```
-
-3. **配置开机自动挂载**：
-   编辑 `/etc/fstab` 文件：
-   ```bash
-   sudo nano /etc/fstab
-   ```
-   在文件末尾追加以下内容（**请将 `<NAS_IP>` 和 `<NAS_PATH>` 替换为实际的 IP 和共享路径**）：
-   ```text
-   # 格式: <NAS_IP>:<NAS_PATH> /mnt/docs nfs 参数 0 0
-   192.168.x.x:/volumeX/Documents  /mnt/docs  nfs  noauto,x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15s,soft,timeo=50,retrans=2,rw,nfsvers=4.1  0  0
-   ```
-   > **Tip**: 这里使用了 `systemd.automount`，可以避免因 NAS 未启动导致宿主机开机卡死的情况，它会在首次访问该目录时自动触发挂载。
-
-4. **重载守护进程并测试挂载**：
-   ```bash
-   # 如果之前已经挂载过，可以先卸载 (可选)
-   # sudo umount /mnt/docs
-   
-   # 重新加载 fstab 并启动自动挂载目标
-   sudo systemctl daemon-reload
-   sudo systemctl restart remote-fs.target
-   
-   # 验证挂载是否成功
-   ls -la /mnt/docs
-   ```
 
 ---
 
@@ -139,8 +110,7 @@ services:
     volumes:
       # 配置目录，由于前面已经创建了 .ssh，因此 .ssh 会被自动包含在内
       - ./config:/config
-      # 将 NAS 挂载的目录映射为工作区
-      - /mnt/docs:/config/workspace
+      - nfs_workspace:/config/workspace
     ports:
       - 1038:8443
     restart: unless-stopped
@@ -148,7 +118,18 @@ services:
       resources:
         limits:
           cpus: "1.5"
-          memory: "4G" # 注意：单位是 G 或 M，不能是 GM
+          memory: "4G"
+
+volumes:
+  nfs_workspace:
+    driver: local
+    driver_opts:
+      type: nfs
+      # 把下面的 IP 改成真实的 NAS 的 IP 。
+      o: addr=192.168.x.x,nfsvers=4.1,rw,soft,timeo=50,retrans=2
+      # device 必须以冒号 : 开头，后面接 NAS 上的绝对路径
+      device: ":/volume2/Documents"
+
 ```
 
 ---

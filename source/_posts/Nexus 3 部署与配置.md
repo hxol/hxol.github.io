@@ -1,11 +1,11 @@
 ---
-title: 部署与配置 Nexus 3 全面指南：Docker、APT 与 Hugging Face 私有代理仓库
+title: Nexus 3 部署与配置
 date: 2026-09-30 15:30:00
 tags: [笔记, Nexus 3, 自托管]
 ---
 
 
-# 部署与配置 Nexus 3 全面指南：Docker、APT 与 Hugging Face 私有代理仓库
+# Nexus 3 部署与配置
 
 **参考信息：** [官方 Docker 镜像 (sonatype/nexus3)](https://hub.docker.com/r/sonatype/nexus3/tags)
 

@@ -1,10 +1,10 @@
 ---
-title: 自建 DNS 服务器全指南：AdGuard Home 与 Technitium DNS 部署及高可用集群
+title: AdGuard Home 与 Technitium DNS 自建 DNS 服务器全指南
 date: 2026-09-30 15:30:00
 tags: [笔记, DNS, AdGuard Home, Technitium DNS, 集群, 自托管]
 ---
 
-# 自建 DNS 服务器全指南：AdGuard Home 与 Technitium DNS 部署及高可用集群教程
+# AdGuard Home 与 Technitium DNS 自建 DNS 服务器全指南
 
 ## ⚠️ 严重警告（前置准备）
 
@@ -426,8 +426,7 @@ ip route add 192.168.2.13/32 dev mac0
 3. **最关键的一步**：在下方的 **Catalog Zone** 下拉菜单中，不要选 `None`，**必须选择 `cluster-catalog.cluster.example.lan`**。
 4. 保存。该域名下的所有 A 记录、CNAME 记录将自动同步至从节点。
 
-### 💡 避坑指南（强烈建议阅读）
-
+### ߒᠩῥ푦쇥헯숥캧㈥뺨腨ﻯ쉊
 1. **从机数据覆盖警告**：
    从节点加入集群的瞬间，主节点的黑白名单（Allowed/Blocked lists）、Apps、用户权限会**完全覆盖**从节点！请务必提前备份从机数据。
 2. **拒绝反向代理 (TLS Termination) 破坏**：

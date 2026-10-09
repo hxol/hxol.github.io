@@ -1,10 +1,10 @@
 ---
-title: 基于 Docker 部署 qBittorrent 并挂载 OneDrive 教程
+title: qBittorrent 部署并挂载 OneDrive 教程
 date: 2026-09-30 15:30:00
 tags: [笔记, qBittorrent, Rclone, 自托管]
 ---
 
-# 基于 Docker 部署 qBittorrent 并挂载 OneDrive 教程
+# qBittorrent 部署并挂载 OneDrive 教程
 
 ## 核心逻辑说明
 1. **本地获取配置**：OneDrive 的 OAuth2 授权需要浏览器跳转，VPS 通常没有图形化界面，难以直接完成。因此，先在本地电脑（Windows/Mac）配置好 Rclone，获取授权后的 `rclone.conf` 配置文件。
@@ -126,7 +126,7 @@ services:
       - 51413:6881/udp
 ```
 
-#### 📌 Rclone 参数重点解释：
+#### Rclone 参数重点解释：
 * **`--vfs-cache-mode full`**：**极其重要**。OneDrive 原生不支持随机读写（而 qBittorrent 下载正是碎片化的随机写入）。开启此参数后，下载的文件会先缓存在 VPS 的本地磁盘中，等单个文件块完成后再异步上传到 OneDrive。如果不加此参数，qBittorrent 会直接报 I/O 错误。
 * **`--vfs-cache-max-size 10G`**：本地缓存的磁盘上限。请务必根据你 VPS 的实际磁盘剩余空间进行调整。
 * **`devices` & `cap_add`**：赋予该容器在宿主机上挂载文件系统的底层权限。
@@ -206,4 +206,4 @@ sudo ufw allow 51413/udp
 4. **读写权限报错**：如果在 qB 中发现状态为“错误”且日志提示无法写入，可尝试在宿主机执行授权：`sudo chmod -R 777 /opt/qb-drive/onedrive`。
 5. **挂载稳定性**：网络波动偶尔会导致 Rclone 挂载掉线。如果发现 `/opt/qb-drive/onedrive` 目录变为空白，直接执行 `sudo docker compose restart rclone` 即可恢复。
 
-> **💡 最佳实践建议**：本方案非常适合日常轻量级的追剧观影下载。但如果你是重度 PT 玩家（保种狂魔），频繁的 I/O 会给 Rclone 带来巨大压力。针对重度需求，更推荐的方案是：**先将文件纯粹下载到 VPS 本地磁盘，再利用 Rclone 的 `move` 配合 Cron 定时脚本，在闲时周期性搬运到网盘**。
+> **最佳实践建议**：本方案非常适合日常轻量级的追剧观影下载。但如果你是重度 PT 玩家（保种狂魔），频繁的 I/O 会给 Rclone 带来巨大压力。针对重度需求，更推荐的方案是：**先将文件纯粹下载到 VPS 本地磁盘，再利用 Rclone 的 `move` 配合 Cron 定时脚本，在闲时周期性搬运到网盘**。
