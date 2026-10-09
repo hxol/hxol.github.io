@@ -85,12 +85,6 @@ find . -path "./$OUTPUT_ROOT" -prune -o -type f -iname "*.pdf" -print0 | while I
     
 done
 
-echo "ߎ頥娩㨥䄧ƥ萯쁦逦쉥뾧釥퇥粥혦侥쨠./$OUTPUT_ROOT/ 目录下，并保持了原有的目录结构。"
+echo "全部处理完成！所有图片均已存放在 ./$OUTPUT_ROOT/ 目录下，并保持了原有的目录结构。"
 ```
 
-## 扩展备忘录
-
-> ߒᠪ*维护提示**：这里预留了扩展空间。未来如果您发现了新的参数、遇到了特殊 PDF（如加密 PDF），或者想补充 Python 脚本（如 `PyMuPDF`），可以直接在此处追加记录。
-
-*   **处理加密文件**：如果 PDF 设置了用户密码，可以使用 `-upw <密码>` 参数进行解锁提取。
-*   **提取特定页码**：如果只需要提取某几页的图片，可以配合 `-f` (first page) 和 `-l` (last page) 参数。例如只提取第 5 到第 10 页：`pdfimages -all -f 5 -l 10 input.pdf output_prefix`。

@@ -164,7 +164,7 @@ sudo docker compose logs -f
 
 ---
 
-## ߒᠨ趨ᥥ入뺨(Pro-Tips)
+## 进阶补充建议
 
 1. **配置 HTTPS 反向代理 (强烈推荐)**：
    绝大多数设备（尤其是 iOS 和 Android）在同步日历和通讯录时**强制要求或强烈建议使用 HTTPS 协议**。建议在 Radicale 前端配置 Nginx、Caddy 或 Traefik 进行反向代理，并申请免费的 SSL 证书（如 Let's Encrypt）。

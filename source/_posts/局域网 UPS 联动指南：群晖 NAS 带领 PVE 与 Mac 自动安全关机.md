@@ -76,7 +76,7 @@ PVE 基于 Debian，其包管理器自带 NUT，安装和配置非常简单。
    ```
    如果屏幕上输出了一大堆关于 UPS 的状态信息（如 `battery.charge`, `ups.load` 等），说明 PVE 已经成功连上群晖！
 
-> **ߛࠨᥥ兦亠(PVE 虚拟机安全关机)：**
+> **补充提示(PVE 虚拟机安全关机)：**
 > PVE 在收到关机信号后，会按顺序关闭其中的虚拟机。为了防止虚拟机被强制断电，请务必在重要的虚拟机（如 Windows、Linux 客户机）中**安装 QEMU Guest Agent**，并在 PVE 的虚拟机“选项”中开启 QEMU Guest Agent 功能，这样 PVE 才能优雅地软关机虚拟机。
 
 ---
