@@ -1,10 +1,10 @@
 ---
-title: 使用 Docker 或 Podman 部署 Cloudflared Tunnel
+title: Cloudflared Tunnel  的安装部署
 date: 2026-09-30 15:34:00
 tags: [笔记, Cloudflared Tunnel, Podman, 自托管]
 ---
 
-# 使用 Docker / Podman 部署 Cloudflared Tunnel 指南
+# Cloudflared Tunnel  的安装部署
 
 本文档介绍了如何使用 Docker Compose 或 Podman 在 Linux 环境中部署 Cloudflare Tunnel（`cloudflared`）。
 

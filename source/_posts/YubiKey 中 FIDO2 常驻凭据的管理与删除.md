@@ -1,22 +1,22 @@
 ---
-title: 管理与删除 YubiKey 中的 FIDO2 常驻凭据
+title: YubiKey 中 FIDO2 常驻凭据的管理与删除
 date: 2026-10-02 13:02:08
 tags: [笔记, YubiKey, FIDO2]
 ---
 
 
-# 管理与删除 YubiKey 中的 FIDO2 常驻凭据
+# YubiKey 中 FIDO2 常驻凭据的管理与删除
 
 FIDO2 常驻凭据（Discoverable Credentials）允许我们在登录时实现无密码体验（Passkey）。当 YubiKey 存储空间不足或需要清理废弃账号时，可以通过以下方式单独删除这些凭据。
 
-### 📌 前置要求
+### 前置要求
 - **固件要求**：YubiKey 固件版本必须 **≥ 5.2.x**（若低于此版本，由于硬件限制无法单独管理凭据，只能重置整个 FIDO 模块）。
 - **软件要求**：已安装官方管理工具 [YubiKey Manager](https://www.yubico.com/support/download/yubikey-manager/)。
 - **安全验证**：必须知道你为 YubiKey 设置的 FIDO2 PIN 码。
 
 ---
 
-## 方案一：通过图形界面（GUI）删除（🌟 推荐）
+## 方案一：通过图形界面（GUI）删除（推荐）
 现代版本的 YubiKey Manager 已经支持直接在界面中可视化管理 FIDO2 凭据，这是最直观且跨平台通用的方法。
 
 *   **打开应用**：插入 YubiKey 并启动 YubiKey Manager。
@@ -26,7 +26,7 @@ FIDO2 常驻凭据（Discoverable Credentials）允许我们在登录时实现�
 
 ---
 
-## 方案二：通过命令行（CLI）删除（💻 适合进阶/极客）
+## 方案二：通过命令行（CLI）删除（适合进阶/极客）
 
 如果你更喜欢终端操作，或需要编写自动化脚本，可以使用 `ykman` 命令行工具。
 
@@ -72,7 +72,7 @@ FIDO2 常驻凭据（Discoverable Credentials）允许我们在登录时实现�
 
 ---
 
-## 💡 扩展提示与避坑指南
+## 扩展提示与避坑指南
 
 *   **关于固件版本过低**：
     如果你的 YubiKey 固件低于 5.2.x，终端会报错提示不支持该指令。此时唯一的清理方法是重置 FIDO 应用（`ykman fido reset`）。**注意：** 整体重置会清空所有 FIDO/FIDO2 凭据，请提前做好其他账号的备用登录措施。

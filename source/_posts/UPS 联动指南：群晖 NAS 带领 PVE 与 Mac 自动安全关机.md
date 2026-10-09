@@ -1,12 +1,12 @@
 ---
-title: 局域网 UPS 联动指南：群晖 NAS 带领 PVE 与 Mac 自动安全关机
+title: UPS 联动指南：群晖 NAS 带领 PVE 与 Mac 自动安全关机
 date: 2026-09-30 15:30:00
 tags: [笔记, UPS, 群晖, PVE, Mac, 自托管]
 ---
 
 
 
-# 局域网 UPS 联动指南：群晖 NAS 带领 PVE 与 Mac 自动安全关机
+# UPS 联动指南：群晖 NAS 带领 PVE 与 Mac 自动安全关机
 
 ## 核心思路
 在拥有多台设备却只有一个 UPS（不间断电源）的场景下，我们可以利用 NUT (Network UPS Tools) 服务来实现局域网内的联动关机。
