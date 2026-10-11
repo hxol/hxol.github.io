@@ -263,27 +263,27 @@ Jellyfin 支持大多数常见的视频格式，如 `mp4` 和 `mkv`。此外，�
 
 ```text
 Shows
-├── 剧集名称 A (2010)
+├── Series Name A (2010)
 │   ├── Season 00
-│   │   ├── 某特别篇.mkv
-│   │   ├── 剧集名称 A S00E01.mkv
-│   │   └── 剧集名称 A S00E02.mkv
+│   │   ├── Some Special.mkv
+│   │   ├── Series Name A S00E01.mkv
+│   │   └── Series Name A S00E02.mkv
 │   ├── Season 01
-│   │   ├── 剧集名称 A S01E01-E02.mkv
-│   │   ├── 剧集名称 A S01E03.mkv
-│   │   └── 剧集名称 A S01E04.mkv
+│   │   ├── Series Name A S01E01-E02.mkv
+│   │   ├── Series Name A S01E03.mkv
+│   │   └── Series Name A S01E04.mkv
 │   └── Season 02
-│       ├── 剧集名称 A S02E01.mkv
-│       ├── 剧集名称 A S02E02.mkv
-│       ├── 剧集名称 A S02E03 Part 1.mkv
-│       └── 剧集名称 A S02E03 Part 2.mkv
-└── 剧集名称 B (2018)
+│       ├── Series Name A S02E01.mkv
+│       ├── Series Name A S02E02.mkv
+│       ├── Series Name A S02E03 Part 1.mkv
+│       └── Series Name A S02E03 Part 2.mkv
+└── Series Name B (2018)
     ├── Season 01
-    |   ├── 剧集名称 B S01E01.mkv
-    |   └── 剧集名称 B S01E02.mkv
+    |   ├── Series Name B S01E01.mkv
+    |   └── Series Name B S01E02.mkv
     └── Season 02
-        ├── 剧集名称 B S02E01-E02.mkv
-        └── 剧集名称 B S02E03.mkv
+        ├── Series Name B S02E01-E02.mkv
+        └── Series Name B S02E03.mkv
 ```
 
 单个视频文件中可以包含多个独立集数，但这在系统中只会显示为一个包含了多集元数据的单一词条。建议使用 MKVToolNix 等工具将此类视频拆分为单集文件。
@@ -304,6 +304,15 @@ Shows
 
 #### 外挂字幕和音轨
 可以通过给文件添加后缀名来引入外挂字幕和音轨。后缀通常包含标题或特殊标志。多个标志之间使用 `.` 分隔。
+
+```
+Shows
+└── Series Name A (2021)
+    └── Season 1
+        ├── Series Name A (2021) S01E01 Title.avi
+        ├── Series Name A (2021) S01E01 Title.ja.ass
+        └── Series Name A (2021) S01E01 Title.commentary.ja.aac
+```
 
 | 类型 | 标志 (Flag) |
 | --- | --- |
@@ -333,14 +342,46 @@ Shows
 * `theme-music` (主题音乐)
 * `backdrops` (背景视频)
 
+```
+Awesome TV Show (2024)
+├── Season 1
+│   ├── Awesome TV Show (2024) S01E01 episode name.mp4
+│   ├── trailers
+│   │   └── trailer1.mp4
+│   ├── theme-music
+│   │   ├── Season 01 OP.mp3
+│   │   └── Season 01 ED.flac
+│   └── backdrops
+│        └── S1Intro.mkv
+├── interviews
+│   └── Interview with the Director.mp4
+└── theme-music
+    └── Series Opening.wav
+```
+
 **2. 特定文件名**
 如果只有单一附加文件，将其命名为特定名称并放在同级目录即可。支持：`trailer`，`sample`。
+
+```
+Awesome TV Show (2024)
+├── Season 1
+│   ├── Awesome TV Show (2024) S01E01 episode name.mp4
+└── sample.mp4
+```
 
 **3. 文件后缀**
 如果你希望所有文件都在同一个文件夹中，可以在文件名后加上特定后缀（注意，除特殊说明外，这些后缀中**不能包含空格**）：
 `-trailer`, `.trailer`, `_trailer`, ` trailer` (前面带空格)
 `-sample`, `.sample`, `_sample`, ` sample` (前面带空格)
 `-scene`, `-clip`, `-interview`, `-behindthescenes`, `-deleted`, `-deletedscene`, `-featurette`, `-short`, `-other`, `-extra`
+
+```
+Series Name A (2024)
+├── Season 1
+│   ├── Series Name A (2024) S01E01 episode name.mp4
+│   └── Preview Trailer.trailer.mp4
+└── making of Series Name A-behindthescenes.mp4
+```
 
 #### 剧集特别篇 (Show Specials)
 特别篇应放在 `Season 00` 文件夹中。可以通过元数据信息将其插入到正常的剧情季中观看（在仪表盘 -> 媒体库 -> 显示中开启对应选项）：
@@ -354,16 +395,59 @@ Shows
 * **视频**：放在 `backdrops/` 文件夹中。
 *注意：用户需要在客户端设置中开启此功能。优先播放视频。建议使用 WebM(VP9/Opus) 等标准格式，以免转码导致延迟。*
 
+```
+Shows
+└── Series Name (2010)
+    ├── backdrops
+    │   ├── S1Intro.ext
+    │   └── S2Intro.ext
+    ├── Season 01
+    │   ├── backdrops
+    │   │   └── S1Intro.ext
+    │   └── theme-music
+    │       └── S1Intro.ext
+    ├── Season 02
+    │   ├── backdrops
+    │   │   └── S2Intro.ext
+    │   └── theme.ext
+    ├── theme.ext
+    └── theme-music
+        ├── intro-song.ext
+        └── outro-song.ext
+```
+
 #### 多版本 (Multiple Versions)
 Jellyfin 支持同一剧集的不同版本（如 1080p、720p、加长版等）。只要它们在同一个季文件夹中，且按标准命名方案被识别为同一集即可。
 UI 中的版本列表按字母顺序排列；但分辨率后缀（以 `p` 或 `i` 结尾）会按分辨率从高到低排列。
+
+```
+Shows
+└── Series Name (2010)
+    └── Season 01
+        ├── Series Name S01E01 - 1080p.mkv
+        ├── Series Name S01E01 - 720p.mkv
+        └── Series Name S01E01 - Extended.mkv
+```
 
 #### 3D 视频 (3D Videos)
 通过文件名标签识别 3D 视频。首个标签必须是 `3D`，然后结合以下任意格式标签：
 `hsbs` (半宽左右格式), `fsbs` (全宽左右格式), `htab` (半高上下格式), `ftab` (全高上下格式), `mvc`。
 *支持空格、连字符、点或下划线分隔，且不区分大小写。*
 
+```
+Series Name A (2022) S01E01 Some Episode.3d.ftab.mp4
+Series Name A (2022) S01E02 Some Other Episode.3d.ftab.mp4
+Series Name A (2022) S01E03 Yet another episode.3d.hsbs.mp4
+```
+
 #### 多部分/分盘 (Multiple Parts)
+
+```
+Series Name A (2025)
+└──Season 1
+    ├── Series Name A (2025) S01E01-part-1.mkv
+    └── Series Name A (2025) S01E01-part-2.mkv
+```
 如果视频被分成了多段，支持的标识符包括：`cd`, `dvd`, `part`, `pt`, `disc`, `disk`（配合数字使用）。分隔符支持空格、点、连字符或下划线。
 当合并多段文件和多版本文件时，带有多段的文件版本会在下拉列表中优先显示。
 
@@ -378,28 +462,122 @@ UI 中的版本列表按字母顺序排列；但分辨率后缀（以 `p` 或 `i
 | Logo (标志) | `logo.png` (显示在媒体顶部) |
 | Thumb (缩略图) | `thumb.jpg` (用于首页和缩略图模式) |
 
-#### 占位符 (Placeholders)
+
+```
+Series Name B (2018)
+├── cover.jpg
+├── thumbnail.jpg
+└── Season 01
+    ├── backdrop.webp
+    ├── cover.jpg
+    ├── logo.png
+    ├── Series Name B S01E01.mkv
+    ├── Series Name B S01E01-thumb.jpg
+    ├── Series Name B S01E02.mkv
+    └── Series Name B S01E02-thumb.jpg
+```
+
+### 占位符 (Placeholders)
 允许你向库中添加当前没有实际视频文件的条目。只需创建一个与正常媒体同名的空文件，并以 `.disc` 为后缀即可。
 支持指定媒介类型，将类型加在 `.disc` 前面即可，例如：`Blade Runner (1982).dvd.disc` 或 `Blade Runner (1982).bluray.disc`。
 
+电影
+```
+Movies
+└── Blade Runner (1982)
+    └── Blade Runner (1982).disc
+```
+
+电视剧
+```
+Shows
+└── Example Show (2020)
+    └── Season 01
+        └── Example Show S01E01.dvd.disc
+```
 ---
 
 ### 音乐 (Music)
 
 音乐专辑必须以文件夹组织，每个文件夹包含且仅包含一张专辑。Jellyfin 不关心专辑目录层级，只要遵循单文件夹单专辑原则即可。主要通过提取音频文件内嵌的元数据进行识别。如果未找到元数据，Jellyfin 才会使用文件名作为曲目标题。
 
+```
+Music
+├── Some Artist
+│   ├── Album A
+│   │   ├── Song 1.flac
+│   │   ├── Song 2.flac
+│   │   └── Song 3.flac
+│   └── Album B
+│       ├── Track 1.m4a
+│       ├── Track 2.m4a
+│       └── Track 3.m4a
+└── Album X
+    ├── Whatever You.mp3
+    ├── Like To.mp3
+    ├── Name Your.mp3
+    └── Music Files.mp3
+```
+
 请尽量避免文件名中出现特殊字符：`<, >, :, ", /, \, |, ?, *`
+
+
 
 #### 多盘专辑 (Discs)
 多盘专辑主要通过元数据标签中的“光盘编号”(disc number) 和“总盘数”(total discs) 来识别。所有光盘的曲目可以全放在同一个文件夹下；也可以分文件夹存放（内嵌元数据优先级始终最高）。
+
+```
+Music
+├── Album 1
+│   ├── Disc 1 Track 1.ogg
+│   ├── Disc 1 Track 2.ogg
+│   ├── Disc 2 Track 1.ogg
+│   ├── Disc 3 Track 1.ogg
+│   ├── Disc 3 Track 2.ogg
+│   └── Disc 3 Track 3.ogg
+└── Album 2
+    ├── Disc 1
+    │   ├── Disc 1 Track 1.aiff
+    │   └── Disc 1 Track 2.aiff
+    ├── Disc 2
+    │   ├── Disc 2 Track 1.aiff
+    │   ├── Disc 2 Track 2.aiff
+    │   └── Disc 2 Track 3.aiff
+    └── Disc 3
+        └── Disc 3 Track 1.aiff
+```
 
 #### 歌词 (Lyrics)
 歌词文件必须保存在同一个文件夹中，且文件名必须与对应的音频文件一致，后缀名支持 `.lrc`、`.elrc` 或 `.txt`。
 * **同步歌词**：包含时间戳，用户可以在 UI 中点击每一行跳转到该时间点（可使用如 MiniLyrics 等软件生成）。
 * **非同步歌词**：仅包含纯文本。
 
+歌词
+```
+Music
+└── Some Artist
+    └── Album A
+        ├── Song 1.flac
+        ├── Song 1.lrc
+        ├── Song 2.flac
+        ├── Song 2.lrc
+        ├── Song 3.flac
+        └── Song 3.lrc
+```
+
 #### 元数据图片
 音乐文件夹根目录放置的图片将被作为专辑封面或艺术家头像。如果没有提供外部图片，Jellyfin 将从第一个带有内嵌封面的音频曲目中提取。
+
+```
+Artist
+├── Album
+│   ├── cover.jpg
+│   ├── backdrop.webp
+│   ├── logo.png
+│   ├── Track 1.m4a
+│   └── Track 2.m4a
+└── folder.jpg
+```
 
 #### 文件扩展名与容器 (File Extensions / Containers)
 * 仅包含音频的 `MP4` 文件不会被识别为音乐，请将其重命名为 `.m4a`。
@@ -417,6 +595,25 @@ UI 中的版本列表按字母顺序排列；但分辨率后缀（以 `p` 或 `i
 
 音乐视频的组织方式与电影大致相同，但有几个关键区别：默认不提供外部元数据抓取，并且**支持多层文件夹嵌套**。
 
+```
+MusicVideos
+├── Folder 1
+│   ├── Folder 1.1
+│   │   └── Song 1
+│   │       ├── Song 1 Version 1.mp4
+│   │       ├── Song 1 Version 2.mp4
+│   │       └── Song 1 Version 3.mp4
+│   ├── Song 2
+│   │   ├── Song 2 Version 1.mp4
+│   │   ├── Song 2 Version 1.nfo
+│   │   ├── Song 2 Version 2.mp4
+│   │   └── Song 2 Version 2.nfo
+│   └── Song 3
+│       ├── Song 3.mkv
+│       └── Song 3.nfo
+└── Song 4
+    └── Song 4.avi
+```
 #### 组织与命名
 因为没有元数据抓取器介入，你可以随心所欲地命名文件夹和视频文件。文件夹和文件的名称会直接作为条目标题在 Jellyfin 中显示。
 
@@ -456,7 +653,7 @@ Movie (2021) [imdbid-tt12801262]
 ```
 
 
-### 切片电影的合并 (Split files)
+#### 切片电影的合并 (Split files)
 如果一部电影被分割为多个文件，可以通过特定的后缀让系统自动无缝播放。
 **支持的标签**：`cd`, `dvd`, `part`, `pt`, `disc`, `disk`。
 **分隔符**：空格、`.`、`-`、`_`。
@@ -467,7 +664,7 @@ Movie (2021) [imdbid-tt12801262]
 └── 电影名称-part2.mkv
 ```
 
-### 额外花絮与预告片 (Extras)
+#### 额外花絮与预告片 (Extras)
 Jellyfin 支持将幕后花絮、预告片、删减片段等归类到专属目录下，或使用特定文件名后缀。
 
 **方式一：使用特定子目录**
@@ -494,7 +691,7 @@ Best_Movie_Ever (2019)/
 ```
 此外，单独命名为 `trailer.mp4`（预告）或 `theme.mp3`（主题曲音频）也可被自动识别。
 
-### 3D 电影的识别
+#### 3D 电影的识别
 在文件名中加入 `.3D.` 标签以及格式后缀，Jellyfin 即可自动识别 3D 文件。
 *   `hsbs` / `fsbs` = 左右半宽 / 左右全宽
 *   `htab` / `ftab` = 上下半高 / 上下全高
@@ -536,6 +733,40 @@ specials/
 ### 书籍 (Books)
 
 书籍应该首先按照类型分类（有声读物 Audiobooks、书籍 Books、漫画 Comics），然后（可选地）按作者分类。每本书应该放置在自己独立的文件夹中。
+
+```
+Books
+├── Audiobooks
+│   ├── Author
+│   │   ├── Book1
+│   │   │   └── Book1.flac
+│   │   └── Book2
+│   │       └── Book2.mp3
+│   └── Book3
+│       ├── Book3.aac
+│       ├── content.opf
+│       └── cover.jpg
+├── Books
+│   └── Author
+│       ├── Book4
+│       │   └── Book4.epub
+│       ├── Book5
+│       │   └── Book5.epub
+│       ├── Book6
+│       │   ├── Book6.epub
+│       │   ├── cover.png
+│       │   └── metadata.opf
+│       └── Book7
+│           └── Book7.pdf
+└── Comics
+    ├── Plastic Man (1944)
+    │   └── Plastic Man #002 (1944).cbz
+    ├── Attack on Titan (2012)
+    │   └── Attack on Titan #001 (2012).pdf
+    └── Comic (2008)
+        ├── ComicInfo.xml
+        └── Comic #001 (2008).cbr
+```
 
 * **有声读物支持格式**：常见的音频扩展名。不支持带有阅读追踪的同步有声读物。
 * **其他书籍支持格式**：`azw`, `azw3`, `cb7`, `cbr`, `cbt`, `cbz`, `epub`, `mobi`, `pdf`, `zip`, `rar`, `7z`。
