@@ -1,6 +1,6 @@
 ---
 title: 用浏览器 DevTools 精准定位性能瓶颈
-date: 2026-10-01 15:30:23
+date: 2026-10-11 14:30:23
 tags: [笔记, DevTools, 浏览器, Chrome, 网络]
 ---
 
