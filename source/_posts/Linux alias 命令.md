@@ -51,3 +51,22 @@ zsh
 
 
 alias 实际上是文本替换，不是真正的函数。
+
+### 例子
+
+alias
+```bash
+echo "alias gx='sudo apt update && sudo apt full-upgrade -y'" >> ~/.bashrc
+```
+
+函数
+```bash
+echo '
+gx() {
+    sudo apt update &&
+    sudo apt full-upgrade -y &&
+    sudo apt autoremove -y &&
+    sudo apt autoclean
+}
+' >> ~/.bashrc
+```
