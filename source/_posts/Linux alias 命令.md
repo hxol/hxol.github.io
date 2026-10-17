@@ -70,3 +70,7 @@ gx() {
 }
 ' >> ~/.bashrc
 ```
+
+```bash
+source ~/.bashrc
+```
